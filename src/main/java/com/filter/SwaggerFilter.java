@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author sobidiagha
+ * @author stanlee
  * this was done to ensure that user is redirected to the swagger home page when the ip and port of the application is called.
  */
 

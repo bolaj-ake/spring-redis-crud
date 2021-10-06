@@ -23,7 +23,7 @@ public class RedisClientController {
 
 
     @PostMapping (value = {"/store"}, consumes = {"application/json"}, produces = {"application/json"})
-    public ResponseEntity<RedisResponse> store(@RequestBody RedisRequest redisRequest){
+    public ResponseEntity<RedisResponse> storeData(@RequestBody RedisRequest redisRequest){
         log.info("\n\n\n");
         log.info(">>>>NEW REDIS POST REQUEST FROM CLIENT::");
         log.info("Data : {}", redisRequest.toString());
@@ -32,7 +32,7 @@ public class RedisClientController {
     }
 
     @GetMapping(value = {"/get/{datakey}"}, consumes = {"application/json"}, produces = {"application/json"})
-    public ResponseEntity<RedisResponse> bankpayment(@PathVariable String datakey){
+    public ResponseEntity<RedisResponse> getData(@PathVariable String datakey){
         log.info("\n\n\n");
         log.info(">>>>NEW REDIS GET REQUEST FROM CLIENT::");
         log.info("Data : {}", datakey);
