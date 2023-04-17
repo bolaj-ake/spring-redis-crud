@@ -24,30 +24,30 @@ public class RedisAccessService {
      * @param redisRequest this is the request object
      * @return ResponseEntity<RedisResponse>
      */
-    public ResponseEntity<RedisResponse> storeData(RedisRequest redisRequest){
+    public ResponseEntity<RedisResponse> storeData(RedisRequest redisRequest) {
 
         Boolean isInsert=false;
         RedisResponse redisResponse = new RedisResponse();
         /**
          * Check if Data Exist in Redis
          */
-        if (redisService.isDataExist(redisRequest.getDataKey())){
+        if (redisService.isDataExist(redisRequest.getDataKey())) {
             return ResponseEntity.status(409).body(null);
         }
 
         /**
          * Connfirm if expire has been set else use defualt
          */
-        if(redisRequest.getExpire() > 0){
+        if (redisRequest.getExpire() > 0) {
             isInsert=redisService.insertData(redisRequest.getDataKey(),redisRequest.getData());
-        }else{
+        } else {
             isInsert=redisService.insertData(redisRequest.getDataKey(), redisRequest.getData(), redisRequest.getExpire());
         }
 
         /**
          * if insert is successful return positive feedback
          */
-        if(isInsert){
+        if (isInsert) {
             redisResponse.setResponse("Success");
             return ResponseEntity.ok(redisResponse);
         }

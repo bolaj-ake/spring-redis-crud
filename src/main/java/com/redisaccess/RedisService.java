@@ -37,7 +37,7 @@ public class RedisService {
      * @return true/false
      * @see Boolean
      */
-    public Boolean insertData(String dataKey,String jsonData){
+    public Boolean insertData(String dataKey,String jsonData) {
 
         try{
 
@@ -60,7 +60,7 @@ public class RedisService {
      * @return true/false
      * @see Boolean
      */
-    public Boolean insertData(String dataKey,String jsonData,Integer dataExpiry){
+    public Boolean insertData(String dataKey,String jsonData,Integer dataExpiry) {
 
         try {
 
@@ -81,15 +81,15 @@ public class RedisService {
      * @return true/false
      * @see Boolean
      */
-    public Boolean isDataExist(String dataKey){
+    public Boolean isDataExist(String dataKey) {
 
-        try{
+        try {
             Object tokenObj = hashOperations.get(prefixSession + ":" + dataKey, dataKey);
             if (tokenObj != null) {
                 return true;
             }
 
-        }catch(Exception e){
+        } catch(Exception e) {
 
             log.info(" Redis Service Exception ");
 
@@ -105,7 +105,7 @@ public class RedisService {
      * @see String
      */
 
-    public String getData (String dataKey){
+    public String getData(String dataKey) {
 
         try{
 
@@ -118,7 +118,7 @@ public class RedisService {
 
             return (String) tokenObj;
 
-        }catch (Exception e){
+        } catch(Exception e) {
 
             log.info(" Redis Service Exception ");
             return null;
@@ -131,7 +131,7 @@ public class RedisService {
     public void deleteData(String dataKey) {
         try {
             hashOperations.delete(prefixSession + ":" + dataKey, dataKey);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(" Exception Deleting Redis {}",dataKey);
         }
     }
